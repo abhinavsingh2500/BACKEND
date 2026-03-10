@@ -18,9 +18,12 @@ const fs = require('fs');
     }
 });*/
 
-fs.rename('Abhinav.txt','personalinfo.txt', function(err){
-    if (err){console.error(err);}
+// 
+/*fs.unlink('personalinfo.txt',function(err){
+    if(err){
+        console.error(err);
+    }           
     else{
-        console.log('renamed successfully');
+        console.log('file deleted successfully');
     }
-});
+});*/
