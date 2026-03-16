@@ -1,6 +1,12 @@
-const http=require('node:http');
-const server=http.createServer( function (req, res) {
-    res.end("Hello World");
-});
+const express=require('express');
+const app=express();
 
-server.listen(3000);
+app.get("/", function(req,res){
+    res.send("he he he ");
+})
+
+app.get("/profile", function(req,res){
+    res.send("Abhinav'sprofile");
+})
+
+app.listen(3000);
