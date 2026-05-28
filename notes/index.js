@@ -4,9 +4,8 @@ const path =require('path');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
-
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,"..","notes_ka_maal")));
 app.get("/",function(req,res){
-    res.render("view");
-});     
-app.listen(3001,()=>{console.log("notes_prerequisite   is running on port 3001")});
+    res.render("notes");
+});
+app.listen(3000,()=>{console.log("notes  is running on port 3000")});
