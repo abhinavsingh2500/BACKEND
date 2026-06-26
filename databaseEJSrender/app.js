@@ -29,4 +29,18 @@ app.get("/delete/:id", async (req, res) => {
     console.log(deletedUser);
     res.redirect("/read");
 });
+app.get("/edit/:id", async (req, res) => {
+    const userId = req.params.id;
+    const user = await usermodel.findOne({_id: req.params.id});
+    res.render("edit", { user });
+});
+app.post("/update/:id", async (req, res) => {
+    let { image, username, email } = req.body;
+    let user = await usermodel.findOneAndUpdate(
+        { _id: req.params.id },
+        { username: username, email: email, image: image },
+        { new: true }
+    );
+    res.redirect("/read");
+});
 app.listen(3000,()=>{console.log("database and EJS rendering is running on port 3000")});
