@@ -19,6 +19,7 @@
   "homepage": "https://github.com/abhinavsingh2500/BACKEND#readme",
   "dependencies": {
     "cookie-parser": "^1.4.7",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "init": "^0.1.2"
   }
 }
