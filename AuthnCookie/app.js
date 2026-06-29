@@ -1,13 +1,15 @@
  const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  res.cookie('name', 'Abhinav');
-
+ 
+  let token = jwt.sign({ name: 'Abhinav' }, 'secretkey', { expiresIn: '1h' });
+  res.cookie('token', token);
   bcrypt.genSalt(10, (err, salt) => {
     
 
@@ -23,6 +25,10 @@ app.get('/', (req, res) => {
   });
 
   res.send('Cookie set!');
+});
+app.get("/read", (req, res) => {
+    let data=jwt.verify(req.cookies.token, 'secretkey');
+    res.send(data);
 });
 
 app.listen(3000, () => {
